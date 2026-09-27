@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#d4af37">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Saddam Studios">
+  <title>Mohammad Saddam Studios | Luxury Cinema Lab</title>
+
+  <!-- PWA App Manifest & Icons Built-in -->
+  <link rel="manifest" href="data:application/manifest+json;charset=utf-8,%7B%22name%22%3A%22Mohammad%20Saddam%20Studios%22%2C%22short_name%22%3A%22Saddam%20Studios%22%2C%22start_url%22%3A%22.%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%2307080b%22%2C%22theme_color%22%3A%22%23d4af37%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20120%20120%27%253E%253Cdefs%253E%253ClinearGradient%20id%3D%27g%27%20x1%3D%270%2525%27%20y1%3D%270%2525%27%20x2%3D%27100%2525%27%20y2%3D%27100%2525%27%253E%253Cstop%20offset%3D%270%2525%27%20stop-color%3D%27%2523fff6cc%27%2F%253E%253Cstop%20offset%3D%2735%2525%27%20stop-color%3D%27%2523e0b840%27%2F%253E%253Cstop%20offset%3D%27100%2525%27%20stop-color%3D%27%25235a420b%27%2F%253E%253C%2FlinearGradient%253E%253C%2Fdefs%253E%253Crect%20width%3D%27120%27%20height%3D%27120%27%20rx%3D%2728%27%20fill%3D%27%252308090d%27%2F%253E%253Cpath%20d%3D%27M34%2074%20L40%2046%20L60%2058%20L80%2046%20L86%2074%20Z%27%20fill%3D%27url(%2523g)%27%2F%253E%253Ccircle%20cx%3D%2740%27%20cy%3D%2742%27%20r%3D%274%27%20fill%3D%27%2523ffffff%27%2F%253E%253Ccircle%20cx%3D%2760%27%20cy%3D%2754%27%20r%3D%274%27%20fill%3D%27%2523ffffff%27%2F%253E%253Ccircle%20cx%3D%2780%27%20cy%3D%2742%27%20r%3D%274%27%20fill%3D%27%2523ffffff%27%2F%253E%253Crect%20x%3D%2734%27%20y%3D%2777%27%20width%3D%2752%27%20height%3D%276%27%20rx%3D%273%27%20fill%3D%27url(%2523g)%27%2F%253E%253Ctext%20x%3D%2760%27%20y%3D%2773%27%20font-size%3D%2713%27%20font-weight%3D%27900%27%20fill%3D%27%2523000%27%20text-anchor%3D%27middle%27%20font-family%3D%27serif%27%253EMS%253C%2Ftext%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22192x192%20512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
+
+  <style>
+    :root {
+      --bg: #07080b;
+      --card-bg: rgba(18, 21, 31, 0.95);
+      --card-border: rgba(212, 175, 55, 0.22);
+      --gold-primary: #d4af37;
+      --gold-light: #f9e295;
+      --gold-dark: #8c6d1f;
+      --gold-glow: rgba(212, 175, 55, 0.4);
+      --accent-green: #25d366;
+      --text-main: #f5f6fa;
+      --text-sub: #9ea3b5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      padding-bottom: 95px;
+      overflow-x: hidden;
+    }
+
+    .top-nav {
+      position: sticky;
+      top: 0;
+      background: rgba(7, 8, 11, 0.94);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo-svg {
+      width: 34px;
+      height: 34px;
+      filter: drop-shadow(0 0 8px var(--gold-glow));
+    }
+
+    .brand-title {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, #ffffff, var(--gold-light), var(--gold-primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .install-app-btn {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-primary), var(--gold-dark));
+      color: #000;
+      border: none;
+      padding: 7px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 0 12px var(--gold-glow);
+    }
+
+    .admin-unlock-btn {
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-primary);
+      padding: 7px 11px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    .profile-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      padding: 22px 18px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.1);
+      margin-bottom: 22px;
+    }
+
+    .profile-card::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, var(--gold-glow), transparent 70%);
+      pointer-events: none;
+    }
+
+    .profile-top {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .golden-emblem-wrap {
+      width: 74px;
+      height: 74px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .golden-emblem-svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 14px var(--gold-glow));
+    }
+
+    .profile-meta h2 {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .gold-verified {
+      width: 16px;
+      height: 16px;
+      fill: var(--gold-primary);
+    }
+
+    .profile-meta p {
+      font-size: 12px;
+      color: var(--gold-light);
+      font-weight: 600;
+      margin: 2px 0;
+    }
+
+    .profile-meta span {
+      font-size: 11px;
+      color: var(--text-sub);
+    }
+
+    .bio-text {
+      font-size: 12px;
+      color: var(--text-sub);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .stat-item {
+      background: rgba(9, 11, 17, 0.75);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 10px 8px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--gold-light);
+    }
+
+    .stat-label {
+      font-size: 10px;
+      color: var(--text-sub);
+      margin-top: 2px;
+      text-transform: uppercase;
+    }
+
+    #adminControlPanel {
+      display: none;
+      background: #11131e;
+      border: 2px solid var(--gold-primary);
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 8px;
+    }
+
+    .panel-header h3 {
+      font-size: 14px;
+      color: var(--gold-light);
+    }
+
+    .panel-section-title {
+      font-size: 11px;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 12px 0 6px;
+      font-weight: 700;
+    }
+
+    .admin-input {
+      width: 100%;
+      padding: 10px 12px;
+      background: #07080b;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .admin-input:focus {
+      outline: none;
+      border-color: var(--gold-primary);
+    }
+
+    .save-profile-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-primary), var(--gold-dark));
+      color: #000;
+      border: none;
+      padding: 11px;
+      font-size: 13px;
+      font-weight: 800;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .publish-video-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #fff;
+      border: none;
+      padding: 11px;
+      font-size: 13px;
+      font-weight: 800;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 6px;
+    }
+
+    .section-header {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 24px 0 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-left: 4px solid var(--gold-primary);
+      padding-left: 8px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .service-info h4 {
+      font-size: 14px;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .service-info p {
+      font-size: 11px;
+      color: var(--text-sub);
+    }
+
+    .service-order-btn {
+      background: rgba(37, 211, 102, 0.15);
+      border: 1px solid var(--accent-green);
+      color: var(--accent-green);
+      padding: 7px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .video-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: #000;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-body {
+      padding: 14px;
+    }
+
+    .video-tag {
+      display: inline-block;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--gold-light);
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    .video-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .video-desc {
+      font-size: 12px;
+      color: var(--text-sub);
+      line-height: 1.4;
+      margin-bottom: 14px;
+    }
+
+    .wa-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: linear-gradient(135deg, var(--accent-green), #189e4c);
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 11px;
+      border-radius: 8px;
+    }
+
+    #downloadBanner {
+      background: linear-gradient(135deg, #161926, #0e1018);
+      border: 1px solid var(--gold-primary);
+      border-radius: 14px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
+    }
+
+    #downloadBanner p {
+      font-size: 12px;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    #downloadBanner span {
+      font-size: 10px;
+      color: var(--gold-light);
+      display: block;
+    }
+
+    .bottom-dock {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(9, 11, 16, 0.96);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+
+    .dock-tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      color: var(--text-sub);
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .dock-tab.active {
+      color: var(--gold-primary);
+    }
+
+    .dock-icon {
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-nav">
+    <div class="brand-wrap">
+      <svg class="nav-logo-svg" viewBox="0 0 100 100">
+        <defs>
+          <linearGradient id="goldGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fff0aa"/>
+            <stop offset="50%" stop-color="#d4af37"/>
+            <stop offset="100%" stop-color="#8a6d1e"/>
+          </linearGradient>
+        </defs>
+        <circle cx="50" cy="50" r="45" fill="#121522" stroke="url(#goldGradNav)" stroke-width="3"/>
+        <path d="M26 62 L32 38 L50 50 L68 38 L74 62 Z" fill="url(#goldGradNav)"/>
+        <circle cx="32" cy="35" r="3.5" fill="#ffffff"/>
+        <circle cx="50" cy="46" r="3.5" fill="#ffffff"/>
+        <circle cx="68" cy="35" r="3.5" fill="#ffffff"/>
+        <rect x="26" y="65" width="48" height="5" rx="2" fill="url(#goldGradNav)"/>
+      </svg>
+      <div class="brand-title">SADDAM STUDIOS</div>
+    </div>
+    <div class="nav-actions">
+      <button class="install-app-btn" onclick="triggerAppInstall()">📲 App Install</button>
+      <button class="admin-unlock-btn" onclick="toggleControlCenter()">⚙️ 84097</button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div id="downloadBanner">
+      <div>
+        <p>Saddam Studios VIP App</p>
+        <span>असली Android App अपने मोबाइल में इंस्टॉल करें</span>
+      </div>
+      <button class="install-app-btn" onclick="triggerAppInstall()">इंस्टॉल करें</button>
+    </div>
+
+    <div id="adminControlPanel">
+      <div class="panel-header">
+        <h3>⚡ Studio Live Manager</h3>
+        <span style="font-size:11px; color:var(--accent-green);">PIN: 84097 Verified</span>
+      </div>
+
+      <div class="panel-section-title">📍 Profile & Phone Update</div>
+      <input type="text" id="inputPhone" class="admin-input" placeholder="WhatsApp Number">
+      <input type="text" id="inputLocation" class="admin-input" placeholder="Location">
+      <input type="text" id="inputName" class="admin-input" placeholder="Your Name">
+      <input type="text" id="inputBio" class="admin-input" placeholder="Studio Bio">
+      <button class="save-profile-btn" onclick="saveProfileData()">💾 Save Info (Instant Update)</button>
+
+      <div class="panel-section-title" style="margin-top:16px;">🎬 Add New Video to Feed</div>
+      <input type="text" id="videoTitleInput" class="admin-input" placeholder="Project Name">
+      <input type="text" id="videoUrlInput" class="admin-input" placeholder="YouTube Link या Video ID">
+      <button class="publish-video-btn" onclick="publishVideoFromApp()">🚀 Publish to Feed</button>
+    </div>
+
+    <div class="profile-card">
+      <div class="profile-top">
+        <div class="golden-emblem-wrap">
+          <svg class="golden-emblem-svg" viewBox="0 0 120 120">
+            <defs>
+              <linearGradient id="goldGradMain" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fff6cc"/>
+                <stop offset="35%" stop-color="#e0b840"/>
+                <stop offset="70%" stop-color="#9d7820"/>
+                <stop offset="100%" stop-color="#5a420b"/>
+              </linearGradient>
+              <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1b1e2e"/>
+                <stop offset="100%" stop-color="#0a0c14"/>
+              </linearGradient>
+            </defs>
+            <circle cx="60" cy="60" r="56" fill="url(#shieldGrad)" stroke="url(#goldGradMain)" stroke-width="4"/>
+            <circle cx="60" cy="60" r="48" fill="none" stroke="url(#goldGradMain)" stroke-width="1.2" stroke-dasharray="3,3"/>
+            <path d="M34 74 L40 46 L60 58 L80 46 L86 74 Z" fill="url(#goldGradMain)"/>
+            <circle cx="40" cy="42" r="4" fill="#ffffff"/>
+            <circle cx="60" cy="54" r="4" fill="#ffffff"/>
+            <circle cx="80" cy="42" r="4" fill="#ffffff"/>
+            <rect x="34" y="77" width="52" height="6" rx="3" fill="url(#goldGradMain)"/>
+            <text x="60" y="73" font-size="13" font-weight="900" fill="#000" text-anchor="middle" font-family="serif">MS</text>
+          </svg>
+        </div>
+
+        <div class="profile-meta">
+          <h2 id="displayName">
+            Mohammad Saddam Hussain
+            <svg class="gold-verified" viewBox="0 0 24 24"><path d="M12 2L15.09 5.26L19.5 5.79L18.89 10.22L21.82 13.56L18.25 16.27L17.88 20.73L13.43 20.35L10.5 23.5L8.27 19.64L3.82 19.46L4.23 15.01L1.18 11.78L4.61 8.94L4.8 4.49L9.27 4.51L12 2ZM10.5 16.5L17.5 9.5L16.08 8.08L10.5 13.67L7.92 11.08L6.5 12.5L10.5 16.5Z"/></svg>
+          </h2>
+          <p id="displayRole">Cinema Lab & Creative Director</p>
+          <span id="displayLocation">📍 Dhanwar, Hazaribagh, Jharkhand</span>
+        </div>
+      </div>
+      <p class="bio-text" id="displayBio">
+        Official visual laboratory specializing in high-contrast cinematic edits, AI animations, video thumbnails, and motion picture storytelling.
+      </p>
+      
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num">50+</div>
+          <div class="stat-label">Edits Done</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">4K / UHD</div>
+          <div class="stat-label">Quality</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Satisfaction</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <h2>Studio Services & Booking</h2>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-info">
+          <h4>🎬 Pro YouTube & Reel Editing</h4>
+          <p>Cinematic cut, sound dynamics & color grading</p>
+        </div>
+        <a id="srvBtn1" href="#" target="_blank" class="service-order-btn">Book on WhatsApp</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-info">
+          <h4>🖼️ High-Contrast Thumbnail & Posters</h4>
+          <p>16:9 & 9:16 custom movie/video graphics</p>
+        </div>
+        <a id="srvBtn2" href="#" target="_blank" class="service-order-btn">Book on WhatsApp</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-info">
+          <h4>🤖 AI Video & Visual Storytelling</h4>
+          <p>Cinematic prompts, character motion & VFX</p>
+        </div>
+        <a id="srvBtn3" href="#" target="_blank" class="service-order-btn">Book on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <h2>Featured Works & Portfolio</h2>
+      <span style="font-size:12px; color:var(--gold-light);">Global Showcase</span>
+    </div>
+
+    <div id="videoFeedContainer">
+      <div class="video-card">
+        <div class="video-container">
+          <iframe 
+            src="https://www.youtube.com/embed/Ta4nyuMvqok" 
+            title="Featured Work" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-body">
+          <span class="video-tag">Masterwork Edit</span>
+          <h3 class="video-title">Cinematic Pro Editing & Motion Work</h3>
+          <p class="video-desc">Advanced transitions, sound dynamics, color balance and motion visual effects by Mohammad Saddam Studios.</p>
+          <a id="btnDefaultOrder" href="#" target="_blank" class="wa-btn">
+            💬 Direct Order on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bottom-dock">
+    <a href="#" class="dock-tab active">
+      <span class="dock-icon">⚡</span>
+      Dashboard
+    </a>
+    <a id="bottomCallBtn" href="tel:7781972099" class="dock-tab">
+      <span class="dock-icon">📞</span>
+      Call Saddam
+    </a>
+    <a id="bottomWaBtn" href="#" target="_blank" class="dock-tab">
+      <span class="dock
